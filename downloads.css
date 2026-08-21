@@ -7,6 +7,8 @@
   border-top: 1px solid var(--line);
 }
 
+.download-page { min-height: calc(100vh - 234px); align-items: start; }
+
 .download-lead {
   max-width: 440px;
   margin: 26px 0 0;
@@ -14,6 +16,32 @@
   font-size: 17px;
   line-height: 1.65;
 }
+
+.os-switcher {
+  margin-top: 24px;
+  padding: 4px;
+  display: inline-flex;
+  gap: 4px;
+  background: #dfe5da;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+}
+
+.os-switcher button {
+  min-height: 38px;
+  padding: 0 15px;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.os-switcher button:hover { color: var(--ink); }
+.os-switcher button.active { color: #faffea; background: var(--ink); }
 
 .download-grid { display: grid; gap: 10px; }
 
@@ -51,7 +79,9 @@
   font-weight: 800;
 }
 
-.download-grid h3 { margin: 0 0 4px; font-size: 17px; }
+.platform img { width: 22px; height: 22px; display: block; }
+
+.download-grid h2, .download-grid h3 { margin: 0 0 4px; font-size: 17px; letter-spacing: normal; }
 .download-grid p { margin: 0; color: var(--muted); font-size: 12px; }
 .download-grid .button { min-height: 42px; min-width: 142px; padding: 0 15px; font-size: 12px; }
 

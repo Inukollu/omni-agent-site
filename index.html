@@ -13,7 +13,7 @@
 <body>
   <nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="#top" aria-label="Omni Agent home"><span class="mark"><i></i></span><strong>Omni Agent</strong></a>
-    <div class="nav-links"><a href="#experience">Experience</a><a href="#teams">For teams</a><a class="button small platform-download" href="#downloads">Get Omni Agent</a></div>
+    <div class="nav-links"><a href="#experience">Experience</a><a href="#teams">For teams</a><a class="button small" href="#downloads">Download</a></div>
   </nav>
 
   <main>
@@ -22,7 +22,7 @@
         <p class="eyebrow"><i></i> Built for customer-facing teams</p>
         <h1>Every conversation.<br><em>One calm workspace.</em></h1>
         <p class="lead">Omni Agent brings calls, chats, email, and the tools behind them into one focused desktop experience—so agents can stay present with every customer.</p>
-        <div class="actions"><a class="button platform-download" href="#downloads">Download Omni Agent <span>↓</span></a><a class="text-link" href="#experience">See the experience ↓</a></div>
+        <div class="actions"><a class="button" href="#downloads">Download Omni Agent <span>↓</span></a><a class="text-link" href="#experience">See the experience ↓</a></div>
         <small>Available for macOS, Windows, and Linux</small>
       </div>
       <div class="stage" aria-label="Omni Agent workspace preview">
@@ -43,44 +43,20 @@
     </section>
 
     <section class="downloads" id="downloads">
-      <div><p class="eyebrow"><i></i> Download Omni Agent</p><h2>Choose your platform.</h2><p class="download-lead" id="detected-platform">Select the installer for your desktop.</p></div>
+      <div><p class="eyebrow"><i></i> Download Omni Agent</p><h2>Choose your platform.</h2><p class="download-lead" id="detected-platform">Select the installer for your desktop.</p><div class="os-switcher" aria-label="Choose operating system"><button type="button" data-os="windows">Windows</button><button type="button" data-os="mac">macOS</button><button type="button" data-os="linux">Linux</button></div></div>
       <div class="download-grid">
-        <article data-platform="windows"><span class="platform">⊞</span><div><h3>Windows</h3><p>Windows 10 or later · x64</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-windows-x64-setup.exe">Download .exe ↓</a></article>
-        <article data-platform="mac-arm"><span class="platform">●</span><div><h3>macOS</h3><p>Apple Silicon</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-macos-arm64.dmg">Download .dmg ↓</a></article>
-        <article data-platform="mac-intel"><span class="platform">●</span><div><h3>macOS</h3><p>Intel</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-macos-x64.dmg">Download .dmg ↓</a></article>
-        <article data-platform="linux"><span class="platform">◆</span><div><h3>Linux</h3><p>AppImage · x64</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-linux-x64.AppImage">Download ↓</a></article>
-        <article data-platform="linux"><span class="platform">◆</span><div><h3>Linux</h3><p>Debian / Ubuntu · x64</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-linux-x64.deb">Download .deb ↓</a></article>
+        <article data-platform="windows"><span class="platform"><img src="platform-windows.svg" alt=""></span><div><h3>Windows</h3><p>Windows 10 or later · x64</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-windows-x64-setup.exe">Download .exe ↓</a></article>
+        <article data-platform="mac"><span class="platform"><img src="platform-apple.svg" alt=""></span><div><h3>macOS</h3><p>Apple Silicon</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-macos-arm64.dmg">Download .dmg ↓</a></article>
+        <article data-platform="mac"><span class="platform"><img src="platform-apple.svg" alt=""></span><div><h3>macOS</h3><p>Intel</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-macos-x64.dmg">Download .dmg ↓</a></article>
+        <article data-platform="linux"><span class="platform"><img src="platform-linux.svg" alt=""></span><div><h3>Linux</h3><p>AppImage · x64</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-linux-x86_64.AppImage">Download ↓</a></article>
+        <article data-platform="linux"><span class="platform"><img src="platform-linux.svg" alt=""></span><div><h3>Linux</h3><p>Debian / Ubuntu · x64</p></div><a class="button lime" href="https://github.com/Inukollu/omni-agent-site/releases/latest/download/Omni-Agent-linux-amd64.deb">Download .deb ↓</a></article>
       </div>
     </section>
 
-    <section class="teams" id="teams"><div><p class="eyebrow"><i></i> For modern service teams</p><h2>Give agents clarity.<br>Give customers your best.</h2></div><div><p>Omni Agent creates a consistent place to work across every customer channel while giving agents room to focus, recover, and do excellent work.</p><a class="button lime" href="#downloads">Choose your download ↓</a></div></section>
+    <section class="teams" id="teams"><div><p class="eyebrow"><i></i> For modern service teams</p><h2>Give agents clarity.<br>Give customers your best.</h2></div><div><p>Omni Agent creates a consistent place to work across every customer channel while giving agents room to focus, recover, and do excellent work.</p><a class="button lime" href="#downloads">Choose your download ↑</a></div></section>
   </main>
 
   <footer><a class="brand" href="#top"><span class="mark"><i></i></span><strong>Omni Agent</strong></a><p>Customer conversations, beautifully coordinated.</p><span>© 2026 Xema</span></footer>
-  <script>
-    (() => {
-      const ua = navigator.userAgent.toLowerCase();
-      const platform = (navigator.userAgentData?.platform || navigator.platform || "").toLowerCase();
-      let key = "windows";
-      let label = "Windows";
-      if (platform.includes("mac") || ua.includes("macintosh")) {
-        const arm = ua.includes("arm64") || ua.includes("aarch64");
-        key = arm ? "mac-arm" : "mac-intel";
-        label = arm ? "macOS — Apple Silicon" : "macOS — Intel";
-      } else if (platform.includes("linux") || ua.includes("linux")) {
-        key = "linux";
-        label = "Linux";
-      }
-      const preferred = document.querySelector(`[data-platform="${key}"]`);
-      const target = preferred?.querySelector("a");
-      if (!target) return;
-      preferred.classList.add("recommended");
-      document.querySelector("#detected-platform").textContent = `Recommended for this device: ${label}`;
-      document.querySelectorAll(".platform-download").forEach((link) => {
-        link.href = target.href;
-        link.firstChild.textContent = `Download for ${label} `;
-      });
-    })();
-  </script>
+  <script src="downloads.js"></script>
 </body>
 </html>
