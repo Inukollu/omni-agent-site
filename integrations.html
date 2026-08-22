@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#10232d">
+  <meta name="description" content="Build an Omni-compatible backend integration with the typed Omni Agent protocol.">
+  <link rel="canonical" href="https://agent.xema.in/integrations.html"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="integrations.css"><title>Integrate with Omni Agent</title>
+</head>
+<body>
+  <nav class="nav" aria-label="Primary navigation"><a class="brand" href="index.html" aria-label="Omni Agent home"><span class="mark"><i></i></span><strong>Omni Agent</strong></a><div class="nav-links"><a href="index.html#experience">Experience</a><a aria-current="page" href="integrations.html">Integrate</a><a class="button small" href="index.html#downloads">Download</a></div></nav>
+  <main class="guide">
+    <header class="guide-hero"><p class="eyebrow"><i></i> Integration guide</p><h1>Connect your backend.<br><em>Keep your architecture.</em></h1><p class="lead">Implement one small TypeScript adapter. Omni coordinates capacity, breaks, tasks, and browser workspaces while your client retains authentication, transport, reconnect, and provider-specific behavior.</p></header>
+    <section class="guide-grid">
+      <aside aria-label="On this page"><strong>On this page</strong><a href="#install">Install locally</a><a href="#adapter">Define an adapter</a><a href="#lifecycle">Lifecycle</a><a href="#jema">Jema pattern</a><a href="#test">Contract test</a></aside>
+      <article>
+        <section id="install"><p class="eyebrow"><i></i> 01 · Install locally</p><h2>Use the package directly.</h2><p>During protocol development, reference the checked-out package with a file dependency.</p><pre><code>"@omni-agent/protocol": "file:../Omni-Agent/packages/protocol"</code></pre></section>
+        <section id="adapter"><p class="eyebrow"><i></i> 02 · Adapter</p><h2>Describe one provider.</h2><pre><code>import {
+  BackendAuthenticationMethod,
+  defineBackendAdapter,
+  OMNI_PROTOCOL_VERSION
+} from "@omni-agent/protocol";
+
+export default defineBackendAdapter({
+  manifest: {
+    id: "acme-chat",
+    displayName: "Acme Chat",
+    channel: "chat",
+    protocolVersion: OMNI_PROTOCOL_VERSION,
+    authenticationMethods: [BackendAuthenticationMethod.BrowserSSO],
+    idleCapabilities: {
+      personalBrowser: {
+        enabled: true,
+        access: {
+          mode: "block-all",
+          allowList: ["https://*.example.com/*"],
+          blockList: []
+        }
+      }
+    }
+  },
+  async createAuthenticationSession(context) {
+    return createAcmeAuthentication(context);
+  },
+  async connect(context) {
+    return createAcmeConnection(context);
+  }
+});</code></pre><p><code>idleCapabilities</code> describes actions available before a task is active, such as outbound dialing or Omni's managed personal browser. Each active backend may contribute personal-browser URL patterns; Omni combines them while retaining its local block policy. Controls such as hold and disposition are declared separately on each assigned task. Assignments are automatic. A task also carries its channel, wrap time, and any number of named browser URLs. When <code>reuse</code> is false, the browser is never reused. When true, <code>BrowserIsolationScheme</code> decides which definitions reuse the same browser.</p></section>
+        <section id="lifecycle"><p class="eyebrow"><i></i> 03 · Lifecycle</p><h2>A small, predictable flow.</h2><ol><li>Omni creates the backend authentication session and restores or requests login.</li><li>After authentication, Omni calls <code>connect()</code> with the signed-in OS agent.</li><li>Omni subscribes to changes, then reads the current snapshot.</li><li><code>requestWork()</code> reports composite capacity; task assignment events are accepted automatically.</li><li>Break requests remain pending until every provider approves. A provider may deny and suggest a retry time.</li><li>Task commands carry stable IDs, making retries safe after uncertain network failures.</li><li>After real-time media ends, Omni starts the task’s fixed wrap timer.</li><li>After reconnect, the provider republishes one authoritative snapshot so Omni recovers missed work.</li></ol></section>
+        <section id="jema"><p class="eyebrow"><i></i> 04 · Reference pattern</p><h2>Works naturally with Jema.</h2><p>Jema’s framework-free design is the reference shape: one client, readable live values, unsubscribe callbacks, promise-based actions, and reconnect hidden in its transport. A Xema adapter maps those values and actions into Omni’s provider-neutral task events. Jema does not need to adopt Omni, and Omni does not depend on SignalR or RxJS.</p></section>
+        <section id="test"><p class="eyebrow"><i></i> 05 · Verify</p><h2>Ship a contract test.</h2><pre><code>import { exerciseAdapter } from "@omni-agent/protocol/testing";
+
+const result = await exerciseAdapter(adapter, {
+  agent: { id: "A-102", displayName: "Aarav Sharma" }
+});</code></pre><p>The test kit checks protocol compatibility and authentication state, connects the adapter, observes its events, reads its state, exercises a capacity signal, and disconnects cleanly.</p></section>
+      </article>
+    </section>
+  </main>
+  <footer><a class="brand" href="index.html"><span class="mark"><i></i></span><strong>Omni Agent</strong></a><p>One typed contract. Any customer channel.</p><span>© 2026 Xema</span></footer>
+</body>
+</html>
